@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Ягодный край — Варенье, сиропы и чай из дикоросов</title>
+    <!-- Preconnect для шрифтов и оптимизации -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts: современный и читаемый шрифт (Inter + акцент Playfair) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #6b1a1a 0%, #8b2c2c 50%, #a13b3b 100%);
+            /* глубокий ягодно-красный градиент */
+            color: #FFF2E6;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Типографика */
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            color: #FFF0E0;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #FFB347;
+            border-radius: 4px;
+        }
+
+        /* Шапка + навигация на полупрозрачном фоне */
+        header {
+            background: rgba(45, 12, 12, 0.85);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #E67A3C;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 1rem 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #FFE4C4;
+        }
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            background: #E65C2E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255,90,30,0.5);
+        }
+        .logo-img i {
+            font-size: 28px;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #FFEAD2;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: #FFB347;
+            text-shadow: 0 0 2px rgba(255,180,70,0.5);
+        }
+        /* бургер для мобильных */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #FFD8B0;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                padding: 1.5rem 0 0.8rem;
+                background: rgba(70, 25, 25, 0.95);
+                border-radius: 24px;
+                margin-top: 0.5rem;
+                backdrop-filter: blur(4px);
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .navbar {
+                flex-wrap: wrap;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* hero секция с красным градиентом */
+        .hero {
+            padding: 4rem 0 3rem;
+            background: linear-gradient(115deg, #7a1f1f 0%, #bc4e2c 100%);
+            border-radius: 0 0 56px 56px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-text {
+            flex: 1.2;
+        }
+        .hero-text h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            color: #FFF2E0;
+            margin-bottom: 1.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #FFECD6;
+        }
+        .btn {
+            display: inline-block;
+            background: #FFB347;
+            color: #561C1C;
+            padding: 14px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+        .btn:hover {
+            background: #FF9F1C;
+            transform: translateY(-2px);
+            color: #2F0A0A;
+        }
+        .hero-image {
+            flex: 0.8;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 40px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+            border: 2px solid #FFC285;
+        }
+        /* карточки товаров на полупрозрачном фоне */
+        .section {
+            padding: 4rem 0;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .product-card {
+            background: rgba(255, 245, 235, 0.95);
+            border-radius: 32px;
+            overflow: hidden;
+            transition: 0.25s ease;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+            backdrop-filter: blur(2px);
+            color: #3B1A1A;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+            background: #FFF8F0;
+        }
+        .product-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 3px solid #D9541E;
+        }
+        .product-info {
+            padding: 1.5rem;
+        }
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #A12E1A;
+        }
+        .price {
+            color: #C0392B;
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin: 0.8rem 0;
+        }
+        .btn-small {
+            background: #FAD1B0;
+            color: #842A1A;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-small:hover {
+            background: #E67A3C;
+            color: white;
+        }
+
+        /* О нас / преимущества — карточки на тёмно-красном фоне с контрастом */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        .feature-item {
+            flex: 1;
+            text-align: center;
+            background: rgba(60, 20, 20, 0.75);
+            backdrop-filter: blur(4px);
+            padding: 2rem 1rem;
+            border-radius: 32px;
+            transition: 0.2s;
+            border: 1px solid #E67A3C;
+        }
+        .feature-item i {
+            font-size: 2.4rem;
+            color: #FFB347;
+            margin-bottom: 1rem;
+        }
+        .feature-item h3 {
+            color: #FFE0B5;
+        }
+
+        /* форма обратной связи */
+        .form-card {
+            background: rgba(255, 245, 235, 0.96);
+            border-radius: 48px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 700px;
+            margin: 0 auto;
+            color: #2E0F0F;
+        }
+        .input-group {
+            margin-bottom: 1.2rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 32px;
+            border: 1px solid #D98C5F;
+            font-family: inherit;
+            font-size: 1rem;
+            background: #FEF3E8;
+            transition: 0.2s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #E65C2E;
+            box-shadow: 0 0 0 3px rgba(230,92,46,0.3);
+        }
+        button[type="submit"] {
+            width: 100%;
+            background: #C53A1F;
+            border: none;
+            padding: 14px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: white;
+        }
+        button[type="submit"]:hover {
+            background: #9E2D15;
+        }
+        .form-message {
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* ПОДВАЛ (футер) в стиле красных тонов */
+        footer {
+            background: #2D0C0C;
+            color: #FFE6D5;
+            margin-top: 2rem;
+            border-top: 2px solid #E67A3C;
+        }
+        .footer-main {
+            padding: 3rem 0 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h3, .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+            color: #FFC489;
+        }
+        .footer-col p {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #FADBBB;
+        }
+        .footer-col i {
+            width: 28px;
+            color: #E67A3C;
+            margin-right: 8px;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+        .footer-links a {
+            color: #FADBBB;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .footer-links a:hover {
+            color: #FFB347;
+            padding-left: 4px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: #4A1E1E;
+            border-radius: 50%;
+            color: #FFD3A5;
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            background: #E67A3C;
+            color: #2D0C0C;
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            border-top: 1px solid #6E2C2C;
+            padding: 1.5rem 0;
+            text-align: center;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .footer-bottom a {
+            color: #FFC28C;
+            text-decoration: none;
+        }
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 680px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* дополнительные акценты: текст внутри цитаты */
+        .quote-block {
+            background: rgba(75, 25, 25, 0.7);
+            border-radius: 40px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(3px);
+            border: 1px solid #E67A3C;
+        }
+        .quote-block i {
+            color: #FFB347;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        section[id] {
+            scroll-margin-top: 90px;
+        }
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .container {
+                padding: 0 18px;
+            }
+        }
+    </style>
+    <!-- Яндекс.Метрика (демо-счетчик) — подключена аналитика -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(98765432, "init", {   // демо-счетчик
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/98765432" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <div class="logo-img"><i class="fas fa-seedling"></i></div>
+                    <span>Ягодный край</span>
+                </div>
+                <button class="menu-toggle" id="mobileMenuBtn" aria-label="Меню"><i class="fas fa-bars"></i></button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#products">Продукты</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#contact">Связь</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero секция -->
+        <section id="home">
+            <div class="hero">
+                <div class="container hero-grid">
+                    <div class="hero-text">
+                        <h1>Варенье, сиропы и чай из дикоросов</h1>
+                        <p>Дары тайги и лесов — натуральные рецепты, собранные с любовью в «Ягодном крае». Клюква, брусника, жимолость, иван-чай — вкус настоящей природы.</p>
+                        <a href="#products" class="btn">Смотреть каталог <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="hero-image">
+                        <img src="ассо.png" alt="Ассортимент варенья, сиропов и чая из дикоросов" width="600" height="500" loading="eager">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Продукты -->
+        <section id="products" class="section">
+            <div class="container">
+                <h2>Наши дары леса</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img class="product-img" src="брусника.png" alt="Банка варенья из брусники" loading="lazy">
+                        <div class="product-info">
+                            <div class="product-title">Варенье «Брусничный лес»</div>
+                            <p>Ягоды дикой брусники, варенье по старинному рецепту. 350г.</p>
+                            <div class="price">490 ₽</div>
+                            <button class="btn-small" onclick="alert('🍂 Спасибо! Товар добавлен в корзину (демо-режим).')"><i class="fas fa-shopping-bag"></i> В корзину</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img class="product-img" src="сироп.png" alt="Сироп из жимолости" loading="lazy">
+                        <div class="product-info">
+                            <div class="product-title">Сироп «Жимолость лесная»</div>
+                            <p>Насыщенный витаминный сироп для десертов и напитков. 250мл.</p>
+                            <div class="price">380 ₽</div>
+                            <button class="btn-small" onclick="alert('🍂 Сироп добавлен в корзину (демо)')"><i class="fas fa-shopping-bag"></i> В корзину</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img class="product-img" src="чай.png" alt="Иван-чай кипрей с дикоросами" loading="lazy">
+                        <div class="product-info">
+                            <div class="product-title">Чай «Ягодный сбор»</div>
+                            <p>Ферментированный иван-чай с листьями брусники и ягодами рябины.</p>
+                            <div class="price">320 ₽</div>
+                            <button class="btn-small" onclick="alert('🍂 Чай добавлен в корзину (демо)')"><i class="fas fa-shopping-bag"></i> В корзину</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img class="product-img" src="клюква.png" alt="Варенье клюква с апельсином" loading="lazy">
+                        <div class="product-info">
+                            <div class="product-title">Варенье «Клюквенный микс»</div>
+                            <p>Клюква, апельсин и пряности — яркий таёжный вкус. 380г.</p>
+                            <div class="price">550 ₽</div>
+                            <button class="btn-small" onclick="alert('🍂 Варенье добавлено в корзину (демо)')"><i class="fas fa-shopping-bag"></i> В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- О нас / преимущества -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2>Почему «Ягодный край»?</h2>
+                <div class="features">
+                    <div class="feature-item"><i class="fas fa-tree"></i><h3>Дикоросы с Алтая</h3><p>Ручной сбор в экологически чистых районах</p></div>
+                    <div class="feature-item"><i class="fas fa-jar"></i><h3>Настоящие рецепты</h3><p>Без загустителей, ароматизаторов и консервантов</p></div>
+                    <div class="feature-item"><i class="fas fa-heart"></i><h3>Здоровое питание</h3><p>Сохраняем витамины и натуральный вкус</p></div>
+                </div>
+                <div class="quote-block" style="margin-top: 2.5rem;">
+                    <i class="fas fa-quote-left" style="font-size: 2rem; color:#FFB347; opacity:0.9;"></i>
+                    <p style="font-size:1.1rem; max-width:700px; margin: 1rem auto;">Наши варенья, сиропы и чай рождаются из лесных даров: клюква, брусника, жимолость, шиповник, иван-чай. Каждая банка — частичка леса.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Форма обратной связи -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 style="text-align: center;">Свяжитесь с нами</h2>
+                <div class="form-card">
+                    <form id="feedbackForm">
+                        <div class="input-group">
+                            <input type="text" id="name" placeholder="Ваше имя *" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" placeholder="E-mail *" required>
+                        </div>
+                        <div class="input-group">
+                            <textarea rows="4" id="message" placeholder="Вопрос или пожелание о варенье, сиропах, чае..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить сообщение <i class="fas fa-paper-plane"></i></button>
+                        <div id="formStatus" class="form-message"></div>
+                    </form>
+                    <p style="font-size:0.8rem; margin-top: 1rem; text-align:center;">* Демо-режим. </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-main">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-seedling"></i> Ягодный край</h3>
+                    <p>Интернет-магазин натуральных продуктов из дикоросов: варенье, сиропы, травяные чаи. С любовью к природе и вашему здоровью.</p>
+                    <div class="social-icons">
+                        <a href="https://vk.com/" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="https://vk.com/" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://vk.com/" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://vk.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Быстрые ссылки</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Главная</a></li>
+                        <li><a href="#products"><i class="fas fa-chevron-right"></i> Каталог</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> О нас</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-phone-alt"></i> +7 (800) 555-33-22</p>
+                    <p><i class="fas fa-envelope"></i> info@yagodny-krai.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Смоленск, ул. Лесная, 12</p>
+                    <p><i class="fas fa-clock"></i> Ежедневно: 09:00 – 20:00</p>
+                </div>
+                <div class="footer-col">
+                    
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 «Ягодный край» — Все права защищены.</span>               
+                <span><a href="#">Карта сайта</a> | <a href="#">Пользовательское соглашение</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const toggleBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('show');
+                });
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('show');
+                    });
+                });
+            }
+
+            const form = document.getElementById('feedbackForm');
+            const statusDiv = document.getElementById('formStatus');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const message = document.getElementById('message').value.trim();
+                    if (!name || !email || !message) {
+                        statusDiv.innerHTML = '<span style="color:#b03a2e;">❌ Пожалуйста, заполните все поля.</span>';
+                        return;
+                    }
+                    if (!email.includes('@') || !email.includes('.')) {
+                        statusDiv.innerHTML = '<span style="color:#b03a2e;">📧 Введите корректный email.</span>';
+                        return;
+                    }
+                    statusDiv.innerHTML = '<span style="color:#2c7a47;">✅ Спасибо, ' + name + '! Ваше сообщение получено. Ответим в ближайшее время. (демо)</span>';
+                    form.reset();
+                    setTimeout(() => statusDiv.innerHTML = '', 5000);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
